@@ -79,8 +79,7 @@ class Article {
 		return $this->published;
 	}
 
-	public function setPublish(DateTime $
-		value = null){
+	public function setPublish(DateTime $value = null){
 		$this->slug = $value;
 	}
 }

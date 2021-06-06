@@ -3,11 +3,16 @@
 use App\Service\Templating;
 use DI\Container;
 use Slim\Factory\AppFactory;
+use App\Service\DatabaseFactory;
 
 require('../vendor/autoload.php');
 
 // register services
 $container = new Container();
+
+$container->set('db', function(){
+    return DatabaseFactory::create;
+});
 
 $container->set('templating', function() {
     return new Templating;
