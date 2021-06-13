@@ -15,7 +15,7 @@ class ArticleController extends Controller
         ]);
 
         if(!$article){
-            throw new HttpNotFoundException($request)
+            throw new HttpNotFoundException($request);
         }
         return $this->renderPage($response, 'article.html', ['article' => $article]);
     }
