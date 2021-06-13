@@ -38,6 +38,10 @@ class Article {
 	* @ManyToOne(targetEntity="Author", inversedBy="articles")
 	*/
 	private $author;
+	/**
+	* @ManyToOne(targetEntity="Tag", inversedBy="articles")
+	*/
+	private $tag;
 
 	public function getId(){
 		return $this->id;
