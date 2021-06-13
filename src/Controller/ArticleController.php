@@ -10,6 +10,26 @@ class ArticleController extends Controller
 {
     public function view(Request $request, Response $response, $args = [])
     {
+        $qb = $this->ci->get('db')->createQueryBuilder();
+
+        $qb->select('a')
+            ->from('App\Entity\Article', 'a')
+            ->where('a.slug = :slug')
+            ->setParameter('slug', $args['slug']);
+
+        $query = $qb->getQuery();
+
+        $article = $query->getSingleResult();
+
+
+        return $this->renderPage($response, 'article.html', ['article' => $article]);
+    }
+
+
+    public function viewRP(Request $request, Response $response, $args = [])
+    {
+
+
         $article = $this->ci->get('db')->getRepository('App\Entity\Article')->findOneBy([
 'slug' => $args['slug']
         ]);
@@ -19,6 +39,7 @@ class ArticleController extends Controller
         }
         return $this->renderPage($response, 'article.html', ['article' => $article]);
     }
+
 
     public function viewPK(Request $request, Response $response)
     {
