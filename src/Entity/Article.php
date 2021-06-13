@@ -80,6 +80,6 @@ class Article {
 	}
 
 	public function setPublish(DateTime $value = null){
-		$this->slug = $value;
+		$this->published = $value;
 	}
 }
