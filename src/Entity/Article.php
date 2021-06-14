@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use DateTime;
+use Doctrine\Common\Collection\ArrayCollection;
 
 /**
 * @Entity
@@ -38,10 +39,17 @@ class Article {
 	* @ManyToOne(targetEntity="Author", inversedBy="articles")
 	*/
 	private $author;
+
 	/**
-	* @ManyToOne(targetEntity="Tag", inversedBy="articles")
+	* @ManyToMany(targetEntity="Tag", inversedBy="articles", cascade={"persist"})
+	* @JoinTable(name="article_tags")
+	* @JoinColumn(referencedColumnName="id", nullable=false)
 	*/
-	private $tag;
+	private $tags;
+
+	public function __construct(){
+		$this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+	}
 
 	public function getId(){
 		return $this->id;

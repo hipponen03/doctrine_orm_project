@@ -21,12 +21,14 @@ class Tag {
 	private $name;
 
 	/**
-	* @OneToMany(targetEntity="Article", mappedBy="tag")
+	* @ManyToMany(targetEntity="Article", mappedBy="tags", cascade={"persist"})
+	* @JoinTable(name="article_tags")
+	* @JoinColumn(referencedColumnName="id", nullable=false)
 	*/
 	private $articles;
 
 	public function __construct(){
-		$this->articles = new ArrayCollection();
+		$this->articles = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	public function getId(){
@@ -43,5 +45,9 @@ class Tag {
 
 	public function setName($value){
 		$this->name = $value;
+	}
+
+	public function getArticles(){
+		return $this->articles;
 	}
 }
