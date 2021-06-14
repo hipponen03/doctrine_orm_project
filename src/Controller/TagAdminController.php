@@ -23,7 +23,7 @@ class TagAdminController extends Controller
         $tag = new Tag;
 
         if($request->isPost()){
-            $tag->setName($request->getParam('body'));
+            $tag->setName($request->getParam('name'));
 
             $this->ci->get('db')->persist($tag);
             $this->ci->get('db')->flush();

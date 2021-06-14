@@ -33,8 +33,8 @@ $app->get('/author/{id}', '\App\Controller\AuthorController:author');
 $app->get('/tags', '\App\Controller\TagController:view');
 $app->get('/tag/{id}', '\App\Controller\TagController:tag');
 $app->get('/admin/tag', '\App\Controller\TagAdminController:view');
-$app->get('/admin/tag/create', '\App\Controller\TagAdminController:create');
-$app->get('/admin/tag/{id}', '\App\Controller\TagAdminController:edit');
+$app->any('/admin/tag/create', '\App\Controller\TagAdminController:create');
+$app->any('/admin/tag/{id}', '\App\Controller\TagAdminController:edit');
 
 // finish
 $app->run();
