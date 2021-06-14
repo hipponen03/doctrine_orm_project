@@ -106,4 +106,8 @@ class Article {
 	public function setAuthor($value){
 		$this->author = $value;
 	}
+
+	public function getTags(){
+		return $this->tags;
+	}
 }
